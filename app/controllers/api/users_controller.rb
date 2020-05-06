@@ -24,6 +24,16 @@ module Api
       end
     end
 
+    def update
+      user = User.find(params[:id])
+
+      if user.update(user_params)
+        render json: UserSerializer.new(user).serialized_json
+      else
+        render json: { error: user.errors.messages }, status: 404
+      end
+    end
+
     def destroy
       user = User.find(params[:id])
 
