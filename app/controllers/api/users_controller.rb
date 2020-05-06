@@ -20,7 +20,17 @@ module Api
       if user.save
         render json: UserSerializer.new(user).serialized_json
       else
-        render json: { error: product.errors.messages }, status: 400
+        render json: { error: user.errors.messages }, status: 400
+      end
+    end
+
+    def destroy
+      user = User.find(params[:id])
+
+      if user.destroy
+        head :no_content
+      else
+        render json: { error: user.errors.messages }, status: 404
       end
     end
 
