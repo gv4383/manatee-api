@@ -12,6 +12,16 @@ module Api
       end
     end
 
+    def update
+      skill = Skill.find(params[:id])
+
+      if skill.update(skill_params)
+        render json: SkillSerializer.new(skill).serialized_json
+      else
+        render json: { error: skill.errors.messages }, status: 404
+      end
+    end
+
     private
     
     def skill_params
