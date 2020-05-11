@@ -22,6 +22,16 @@ module Api
       end
     end
 
+    def destroy
+      skill = Skill.find(params[:id])
+
+      if skill.destroy
+        head :no_content
+      else
+        render json: { error: skill.errors.messages }, status: 404
+      end
+    end
+
     private
     
     def skill_params
