@@ -5,13 +5,13 @@ module Api
     def index
       users = User.all
 
-      render json: UserSerializer.new(users).serialized_json
+      render json: UserSerializer.new(users, options).serialized_json
     end
 
     def show
       user = User.find(params[:id])
 
-      render json: UserSerializer.new(user).serialized_json
+      render json: UserSerializer.new(user, options).serialized_json
     end
 
     def create
@@ -28,7 +28,7 @@ module Api
       user = User.find(params[:id])
 
       if user.update(user_params)
-        render json: UserSerializer.new(user).serialized_json
+        render json: UserSerializer.new(user, options).serialized_json
       else
         render json: { error: user.errors.messages }, status: 404
       end
@@ -48,6 +48,10 @@ module Api
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email)
+    end
+
+    def options
+      @options ||= { include: %i[skills] }
     end
   end
 end
