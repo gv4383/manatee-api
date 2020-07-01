@@ -24,24 +24,28 @@ skills = Skill.create([
     name: 'React',
     description: 'I\'ve been working with React for almost 2 years!',
     rating: 4,
-    user_id: 1
+    user_id: 1,
+    mentor: true
   },
   {
     name: 'Ruby on Rails',
     description: 'Just started learning rails this year.',
     rating: 1,
-    user_id: 1
+    user_id: 1,
+    mentor: false
   },
   {
     name: 'SQL',
     description: 'Have an extensive background in databases.',
     rating: 5,
-    user_id: 2
+    user_id: 2,
+    mentor: true
   },
   {
     name: 'Ruby on Rails',
     description: 'Senior back end developer.',
     rating: 5,
-    user_id: 2
+    user_id: 2,
+    mentor: true
   },
 ])
