@@ -35,7 +35,14 @@ module Api
     private
     
     def skill_params
-      params.require(:skill).permit(:name, :description, :rating, :user_id)
+      params.require(:skill).permit(
+        :name,
+        :description,
+        :rating,
+        :mentor,
+        :mentee,
+        :user_id
+      )
     end
   end
 end
