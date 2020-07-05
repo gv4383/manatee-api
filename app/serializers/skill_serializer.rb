@@ -5,4 +5,6 @@ class SkillSerializer < ApplicationSerializer
              :mentor,
              :mentee,
              :user_id
+
+  has_one :user
 end
