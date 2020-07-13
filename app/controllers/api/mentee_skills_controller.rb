@@ -1,7 +1,7 @@
 module Api
   class MenteeSkillsController < ApplicationController
     def index
-      skills = Skill.where(mentee: true)
+      skills = Skill.where("mentee = ? AND name = ?", true, params[:skill])
 
       render json: SkillSerializer.new(skills, options).serialized_json
     end
